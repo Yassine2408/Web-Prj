@@ -30,12 +30,12 @@ export async function HomePage({ locale }: { locale: Locale }) {
   ]);
 
   return (
-    <div className="space-y-14">
+    <div className="space-y-16 md:space-y-20">
       <section className="rounded-3xl border border-border/70 bg-gradient-to-br from-primary/15 via-background to-secondary/20 p-5 shadow-sm sm:p-7 md:p-12">
         <p className="inline-block rounded-full border border-border/70 px-3 py-1 text-xs">
           {t(locale, "Sites web performants pour business marocains", "مواقع فعالة للشركات المغربية")}
         </p>
-        <h1 className="mt-4 max-w-3xl text-4xl font-semibold leading-tight sm:text-[2.5rem] md:text-5xl">
+        <h1 className="mt-4 max-w-3xl text-4xl font-bold leading-tight sm:text-[2.5rem] md:text-5xl">
           {t(
             locale,
             "On construit des sites qui attirent, rassurent et convertissent via WhatsApp, appel et Google Maps.",
@@ -82,8 +82,8 @@ export async function HomePage({ locale }: { locale: Locale }) {
       </section>
 
       <section>
-        <h2 className="text-3xl font-semibold">{t(locale, "Services", "الخدمات")}</h2>
-        <div className="mt-5 grid gap-4 md:grid-cols-3">
+        <h2 className="mb-6 text-3xl font-bold md:text-4xl">{t(locale, "Services", "الخدمات")}</h2>
+        <div className="grid gap-4 md:grid-cols-3">
           {services.slice(0, 6).map((service) => (
             <ServiceCard key={service.id} service={service} locale={locale} />
           ))}
@@ -92,19 +92,19 @@ export async function HomePage({ locale }: { locale: Locale }) {
 
       <ScrollReveal delay={0.1}>
         <section>
-          <h2 className="text-3xl font-semibold">{t(locale, "Ideal pour", "مناسب لـ")}</h2>
-          <div className="mt-5">
+          <h2 className="mb-6 text-3xl font-bold md:text-4xl">{t(locale, "Ideal pour", "مناسب لـ")}</h2>
+          <div>
             <IndustryBadges />
           </div>
         </section>
       </ScrollReveal>
 
       <section>
-        <h2 className="text-3xl font-semibold">{t(locale, "Tarifs", "الأسعار")}</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
+        <h2 className="mb-2 text-3xl font-bold md:text-4xl">{t(locale, "Tarifs", "الأسعار")}</h2>
+        <p className="mb-6 text-base text-muted-foreground">
           {t(locale, "Packages clairs en MAD + maintenance mensuelle.", "باقات واضحة بالدرهم مع خطة صيانة شهرية.")}
         </p>
-        <div className="mt-5">
+        <div>
           <PricingCards locale={locale} />
         </div>
       </section>
@@ -117,8 +117,8 @@ export async function HomePage({ locale }: { locale: Locale }) {
       </ScrollReveal>
 
       <section>
-        <div className="flex items-end justify-between">
-          <h2 className="text-3xl font-semibold">{t(locale, "Projets pilotes", "مشاريع تجريبية")}</h2>
+        <div className="mb-2 flex items-end justify-between">
+          <h2 className="text-3xl font-bold md:text-4xl">{t(locale, "Projets pilotes", "مشاريع تجريبية")}</h2>
           <Link href={locale === "ar" ? "/ar/work" : "/work"} className="text-sm text-primary">
             {t(locale, "Voir tout", "عرض الكل")}
           </Link>
@@ -150,7 +150,7 @@ export async function HomePage({ locale }: { locale: Locale }) {
       </section>
 
       <section>
-        <h2 className="text-3xl font-semibold">{t(locale, "Retours de projets pilotes", "آراء حول مشاريع تجريبية")}</h2>
+        <h2 className="mb-2 text-3xl font-bold md:text-4xl">{t(locale, "Retours de projets pilotes", "آراء حول مشاريع تجريبية")}</h2>
         <p className="mt-2 text-sm text-muted-foreground">
           {t(
             locale,
@@ -164,8 +164,8 @@ export async function HomePage({ locale }: { locale: Locale }) {
       </section>
 
       <section>
-        <h2 className="text-3xl font-semibold">{t(locale, "FAQ", "الأسئلة الشائعة")}</h2>
-        <div className="mt-5">
+        <h2 className="mb-6 text-3xl font-bold md:text-4xl">{t(locale, "FAQ", "الأسئلة الشائعة")}</h2>
+        <div>
           <FAQAccordion faqs={faqs} locale={locale} />
         </div>
       </section>
@@ -178,10 +178,10 @@ export async function HomePage({ locale }: { locale: Locale }) {
 export async function ServicesPage({ locale }: { locale: Locale }) {
   const services = await getServices();
   return (
-    <div className="space-y-10">
+    <div className="space-y-12">
       <section>
-        <h1 className="text-4xl font-semibold">{t(locale, "Nos services", "خدماتنا")}</h1>
-        <p className="mt-3 text-muted-foreground">
+        <h1 className="mb-4 text-4xl font-bold md:text-5xl">{t(locale, "Nos services", "خدماتنا")}</h1>
+        <p className="text-base text-muted-foreground md:text-lg">
           {t(
             locale,
             "De la vitrine au e-commerce, avec focus performance, SEO local et conversion WhatsApp.",
@@ -236,15 +236,17 @@ export async function ServicesPage({ locale }: { locale: Locale }) {
 
 export function PricingPage({ locale }: { locale: Locale }) {
   return (
-    <div className="space-y-8">
-      <h1 className="text-4xl font-semibold">{t(locale, "Tarifs & packs", "الأسعار والباقات")}</h1>
-      <p className="text-muted-foreground">
+    <div className="space-y-10">
+      <div>
+        <h1 className="mb-4 text-4xl font-bold md:text-5xl">{t(locale, "Tarifs & packs", "الأسعار والباقات")}</h1>
+        <p className="text-base text-muted-foreground md:text-lg">
         {t(
           locale,
           "Plans en MAD alignes au marche marocain (vitrine env. 3 000-15 000 MAD, e-commerce env. 8 000-50 000 MAD selon complexite).",
           "خطط بالدرهم متوافقة مع السوق المغربي (موقع تعريفي تقريبًا 3,000 إلى 15,000 درهم، والمتاجر 8,000 إلى 50,000 حسب التعقيد)."
         )}
-      </p>
+        </p>
+      </div>
       <PricingCards locale={locale} />
       <div className="pt-8">
         <h2 className="mb-4 text-2xl font-semibold">{t(locale, "Comparaison détaillée", "مقارنة تفصيلية")}</h2>
@@ -287,15 +289,17 @@ export function PricingPage({ locale }: { locale: Locale }) {
 export async function WorkPage({ locale }: { locale: Locale }) {
   const work = await getCaseStudies();
   return (
-    <div className="space-y-8">
-      <h1 className="text-4xl font-semibold">{t(locale, "Projets pilotes", "مشاريع تجريبية")}</h1>
-      <p className="text-sm text-muted-foreground">
+    <div className="space-y-10">
+      <div>
+        <h1 className="mb-4 text-4xl font-bold md:text-5xl">{t(locale, "Projets pilotes", "مشاريع تجريبية")}</h1>
+        <p className="text-base text-muted-foreground">
         {t(
           locale,
           "Nous sommes une nouvelle structure: ces cas montrent notre methode de travail sur des projets pilotes.",
           "نحن هيكل جديد: هذه الحالات توضح منهجية العمل لدينا عبر مشاريع تجريبية."
         )}
-      </p>
+        </p>
+      </div>
       <div className="grid gap-4 md:grid-cols-3">
         {work.map((item) => (
           <Card key={item.slug} className="rounded-2xl">
@@ -357,8 +361,8 @@ export async function WorkDetailPage({ locale, slug }: { locale: Locale; slug: s
 export async function BlogPage({ locale }: { locale: Locale }) {
   const posts = await getBlogPosts();
   return (
-    <div className="space-y-8">
-      <h1 className="text-4xl font-semibold">Blog</h1>
+    <div className="space-y-10">
+      <h1 className="text-4xl font-bold md:text-5xl">Blog</h1>
       <div className="grid gap-4 md:grid-cols-3">
         {posts.map((post) => (
           <Card key={post.slug} className="rounded-2xl">
@@ -397,15 +401,17 @@ export async function BlogDetailPage({ locale, slug }: { locale: Locale; slug: s
 
 export function AboutPage({ locale }: { locale: Locale }) {
   return (
-    <div className="space-y-8">
-      <h1 className="text-4xl font-semibold">{t(locale, "A propos du studio", "من نحن")}</h1>
-      <p className="text-muted-foreground">
+    <div className="space-y-10">
+      <div>
+        <h1 className="mb-4 text-4xl font-bold md:text-5xl">{t(locale, "A propos du studio", "من نحن")}</h1>
+        <p className="text-base text-muted-foreground md:text-lg">
         {t(
           locale,
           "Nous sommes un nouveau studio marocain, 100% en ligne, base a Kenitra. On priorise vitesse, SEO local et experience mobile.",
           "نحن استوديو مغربي جديد 100% أونلاين من القنيطرة. نركز على السرعة وSEO المحلي وتجربة الهاتف."
         )}
-      </p>
+        </p>
+      </div>
       <Card className="rounded-2xl">
         <CardHeader>
           <CardTitle>{t(locale, "Transparence", "الشفافية")}</CardTitle>
@@ -446,15 +452,17 @@ export function AboutPage({ locale }: { locale: Locale }) {
 
 export function ContactPage({ locale }: { locale: Locale }) {
   return (
-    <div className="space-y-8">
-      <h1 className="text-4xl font-semibold">{t(locale, "Contact", "اتصل بنا")}</h1>
-      <p className="text-muted-foreground">
+    <div className="space-y-10">
+      <div>
+        <h1 className="mb-4 text-4xl font-bold md:text-5xl">{t(locale, "Contact", "اتصل بنا")}</h1>
+        <p className="text-base text-muted-foreground md:text-lg">
         {t(
           locale,
           `Le moyen le plus rapide reste WhatsApp: ${siteConfig.phone}. Studio en ligne base a Kenitra.`,
           `أسرع وسيلة للتواصل هي واتساب: ${siteConfig.phone}. نحن استوديو أونلاين من القنيطرة.`
         )}
-      </p>
+        </p>
+      </div>
       <ContactForm locale={locale} />
       <div className="grid gap-4 md:grid-cols-3">
         <Card className="rounded-2xl">

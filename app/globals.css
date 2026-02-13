@@ -75,3 +75,21 @@ body {
     scroll-behavior: auto;
   }
 }
+
+/* Visual hierarchy improvements */
+h1 {
+  @apply font-bold tracking-tight;
+}
+
+h2 {
+  @apply font-bold tracking-tight;
+}
+
+h3 {
+  @apply font-semibold;
+}
+
+/* Consistent section spacing */
+section {
+  @apply scroll-mt-20;
+}
