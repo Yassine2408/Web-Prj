@@ -18,7 +18,7 @@ const cairo = Cairo({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://atlaswebstudio.ma"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://web-prj-flame.vercel.app"),
   title: {
     default: "Atlas Web Studio Maroc",
     template: "%s | Atlas Web Studio",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     title: "Atlas Web Studio Maroc",
     description:
       "Studio digital en ligne a Kenitra: sites conversion-first pour parapharmacies, cliniques, commerces, restaurants et salons.",
-    url: "https://atlaswebstudio.ma",
+    url: process.env.NEXT_PUBLIC_SITE_URL || "https://web-prj-flame.vercel.app",
     siteName: "Atlas Web Studio",
     locale: "fr_MA",
     type: "website",

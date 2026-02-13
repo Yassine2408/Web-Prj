@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const base = "https://atlaswebstudio.ma";
+const base = process.env.NEXT_PUBLIC_SITE_URL || "https://web-prj-flame.vercel.app";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
