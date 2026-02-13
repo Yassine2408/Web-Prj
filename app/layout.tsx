@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Cairo, Inter } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { CookieConsent } from "@/components/cookie-consent";
@@ -53,6 +54,7 @@ export default function RootLayout({
           <ZarazConsentSync />
           {children}
           <CookieConsent />
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>
