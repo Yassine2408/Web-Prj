@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, BadgeCheck, MapPin, Smartphone, Wrench } from "lucide-react";
+import { BadgeCheck, MapPin, Smartphone, Wrench } from "lucide-react";
 import { CTASection } from "@/components/cta-section";
 import { FAQAccordion } from "@/components/faq-accordion";
 import { PricingCards } from "@/components/pricing-cards";
@@ -138,9 +138,9 @@ export async function HomePage({ locale }: { locale: Locale }) {
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground">{item.problem[locale]}</p>
-                <Button asChild variant="ghost" className="mt-3 px-0">
-                  <Link href={(locale === "ar" ? "/ar/work/" : "/work/") + item.slug}>
-                    {t(locale, "Lire l'etude", "قراءة الحالة")} <ArrowRight className="ml-2 h-4 w-4" />
+                <Button asChild variant="outline" className="mt-4 w-full">
+                  <Link href={(locale === "ar" ? "/ar/work/" : "/fr/work/") + item.slug}>
+                    {t(locale, "Voir le projet", "عرض المشروع")}
                   </Link>
                 </Button>
               </CardContent>
@@ -305,8 +305,8 @@ export async function WorkPage({ locale }: { locale: Locale }) {
             </CardHeader>
             <CardContent>
               <p className="text-sm text-muted-foreground">{item.solution[locale]}</p>
-              <Button asChild variant="outline" className="mt-4">
-                <Link href={(locale === "ar" ? "/ar/work/" : "/work/") + item.slug}>{t(locale, "Voir details", "عرض التفاصيل")}</Link>
+              <Button asChild className="mt-4 w-full">
+                <Link href={(locale === "ar" ? "/ar/work/" : "/fr/work/") + item.slug}>{t(locale, "Voir le projet", "عرض المشروع")}</Link>
               </Button>
             </CardContent>
           </Card>
@@ -368,9 +368,9 @@ export async function BlogPage({ locale }: { locale: Locale }) {
             </CardHeader>
             <CardContent>
               <p className="text-sm text-muted-foreground">{post.excerpt[locale]}</p>
-              <Button asChild variant="ghost" className="mt-3 px-0">
-                <Link href={(locale === "ar" ? "/ar/blog/" : "/blog/") + post.slug}>
-                  {t(locale, "Lire", "قراءة")}
+              <Button asChild variant="outline" className="mt-4 w-full">
+                <Link href={(locale === "ar" ? "/ar/blog/" : "/fr/blog/") + post.slug}>
+                  {t(locale, "Lire l'article", "قراءة المقال")}
                 </Link>
               </Button>
             </CardContent>
