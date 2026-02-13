@@ -25,6 +25,9 @@ export const metadata: Metadata = {
   },
   description:
     "Nouveau studio web en ligne base a Kenitra (Maroc): sites rapides, SEO local Google Maps, commandes WhatsApp et maintenance continue.",
+  verification: {
+    google: "cxSfIienqWNucOVOR69_PB4kS4uaB7T2PSrx_G0UTMQ",
+  },
   openGraph: {
     title: "Atlas Web Studio Maroc",
     description:
