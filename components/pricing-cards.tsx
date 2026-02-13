@@ -61,7 +61,7 @@ export function PricingCards({ locale }: { locale: Locale }) {
               ))}
             </ul>
             <Button asChild className="mt-5 w-full">
-              <Link href={locale === "ar" ? "/ar/contact" : "/contact"}>
+              <Link href={locale === "ar" ? "/ar/contact" : "/fr/contact"}>
                 {locale === "ar" ? "اطلب عرض سعر" : "Demander un devis"}
               </Link>
             </Button>

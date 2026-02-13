@@ -20,27 +20,27 @@ const cairo = Cairo({
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://web-prj-flame.vercel.app"),
   title: {
-    default: "Atlas Web Studio Maroc",
+    default: "Atlas Web Studio المغرب",
     template: "%s | Atlas Web Studio",
   },
   description:
-    "Nouveau studio web en ligne base a Kenitra (Maroc): sites rapides, SEO local Google Maps, commandes WhatsApp et maintenance continue.",
+    "استوديو ويب جديد أونلاين من القنيطرة (المغرب): مواقع سريعة وSEO محلي وطلبات واتساب وصيانة مستمرة.",
   verification: {
     google: "cxSfIienqWNucOVOR69_PB4kS4uaB7T2PSrx_G0UTMQ",
   },
   openGraph: {
-    title: "Atlas Web Studio Maroc",
+    title: "Atlas Web Studio المغرب",
     description:
-      "Studio digital en ligne a Kenitra: sites conversion-first pour parapharmacies, cliniques, commerces, restaurants et salons.",
+      "استوديو رقمي أونلاين في القنيطرة: مواقع موجهة للتحويل للبارافارماسيات والعيادات والمتاجر والمطاعم والصالونات.",
     url: process.env.NEXT_PUBLIC_SITE_URL || "https://web-prj-flame.vercel.app",
     siteName: "Atlas Web Studio",
-    locale: "fr_MA",
+    locale: "ar_MA",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Atlas Web Studio Maroc",
-    description: "Studio web en ligne a Kenitra: sites rapides, SEO local et commandes WhatsApp.",
+    title: "Atlas Web Studio المغرب",
+    description: "استوديو ويب أونلاين في القنيطرة: مواقع سريعة وSEO محلي وطلبات واتساب.",
   },
 };
 
@@ -50,7 +50,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" suppressHydrationWarning>
+    <html suppressHydrationWarning>
       <body suppressHydrationWarning className={`${inter.variable} ${cairo.variable} antialiased`}>
         <ThemeProvider>
           <LocalBusinessSchema />

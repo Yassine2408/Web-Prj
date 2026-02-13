@@ -4,15 +4,6 @@ const base = process.env.NEXT_PUBLIC_SITE_URL || "https://web-prj-flame.vercel.a
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
-    "",
-    "/services",
-    "/pricing",
-    "/work",
-    "/blog",
-    "/about",
-    "/contact",
-    "/privacy",
-    "/terms",
     "/ar",
     "/ar/services",
     "/ar/pricing",
@@ -22,11 +13,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/ar/contact",
     "/ar/privacy",
     "/ar/terms",
+    "/fr",
+    "/fr/services",
+    "/fr/pricing",
+    "/fr/work",
+    "/fr/blog",
+    "/fr/about",
+    "/fr/contact",
+    "/fr/privacy",
+    "/fr/terms",
   ];
 
   return routes.map((route) => ({
     url: `${base}${route}`,
     changeFrequency: "weekly",
-    priority: route === "" ? 1 : 0.8,
+    priority: route === "/ar" ? 1 : 0.8,
   }));
 }

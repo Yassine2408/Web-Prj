@@ -23,17 +23,17 @@ export function Footer({ locale }: { locale: Locale }) {
         <div className="text-sm">
           <p className="font-medium">{isAr ? "روابط" : "Liens"}</p>
           <div className="mt-2 flex flex-col gap-1 text-muted-foreground">
-            <Link href={isAr ? "/ar/services" : "/services"}>{isAr ? "الخدمات" : "Services"}</Link>
-            <Link href={isAr ? "/ar/work" : "/work"}>{isAr ? "الأعمال" : "Realisations"}</Link>
-            <Link href={isAr ? "/ar/blog" : "/blog"}>Blog</Link>
-            <Link href={isAr ? "/ar/contact" : "/contact"}>{isAr ? "اتصل" : "Contact"}</Link>
+            <Link href={isAr ? "/ar/services" : "/fr/services"}>{isAr ? "الخدمات" : "Services"}</Link>
+            <Link href={isAr ? "/ar/work" : "/fr/work"}>{isAr ? "الأعمال" : "Realisations"}</Link>
+            <Link href={isAr ? "/ar/blog" : "/fr/blog"}>Blog</Link>
+            <Link href={isAr ? "/ar/contact" : "/fr/contact"}>{isAr ? "اتصل" : "Contact"}</Link>
           </div>
         </div>
         <div className="text-sm">
           <p className="font-medium">{isAr ? "قانوني" : "Legal"}</p>
           <div className="mt-2 flex flex-col gap-1 text-muted-foreground">
-            <Link href={isAr ? "/ar/privacy" : "/privacy"}>{isAr ? "الخصوصية" : "Confidentialite"}</Link>
-            <Link href={isAr ? "/ar/terms" : "/terms"}>{isAr ? "الشروط" : "Conditions"}</Link>
+            <Link href={isAr ? "/ar/privacy" : "/fr/privacy"}>{isAr ? "الخصوصية" : "Confidentialite"}</Link>
+            <Link href={isAr ? "/ar/terms" : "/fr/terms"}>{isAr ? "الشروط" : "Conditions"}</Link>
           </div>
           <p className="mt-3 text-xs text-muted-foreground">
             {isAr

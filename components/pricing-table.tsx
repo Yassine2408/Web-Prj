@@ -77,17 +77,17 @@ export function PricingTable({ locale }: { locale: Locale }) {
             <td className="p-4" />
             <td className="p-4">
               <Button asChild size="sm" variant="outline" className="w-full">
-                <Link href={isAr ? "/ar/contact" : "/contact"}>{isAr ? "اتصل" : "Devis"}</Link>
+                <Link href={isAr ? "/ar/contact" : "/fr/contact"}>{isAr ? "اتصل" : "Devis"}</Link>
               </Button>
             </td>
             <td className="p-4">
               <Button asChild size="sm" className="w-full">
-                <Link href={isAr ? "/ar/contact" : "/contact"}>{isAr ? "اتصل" : "Devis"}</Link>
+                <Link href={isAr ? "/ar/contact" : "/fr/contact"}>{isAr ? "اتصل" : "Devis"}</Link>
               </Button>
             </td>
             <td className="p-4">
               <Button asChild size="sm" variant="outline" className="w-full">
-                <Link href={isAr ? "/ar/contact" : "/contact"}>{isAr ? "اتصل" : "Devis"}</Link>
+                <Link href={isAr ? "/ar/contact" : "/fr/contact"}>{isAr ? "اتصل" : "Devis"}</Link>
               </Button>
             </td>
           </tr>

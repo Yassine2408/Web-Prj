@@ -51,7 +51,7 @@ export async function HomePage({ locale }: { locale: Locale }) {
         </p>
         <div className="mt-6 flex flex-wrap gap-3">
           <Button asChild>
-            <Link href={locale === "ar" ? "/ar/contact" : "/contact"}>{t(locale, "Demander un devis", "اطلب عرض سعر")}</Link>
+            <Link href={locale === "ar" ? "/ar/contact" : "/fr/contact"}>{t(locale, "Demander un devis", "اطلب عرض سعر")}</Link>
           </Button>
           <Button variant="outline" asChild>
             <a href={`https://wa.me/${siteConfig.whatsappNumber.replace(/\D/g, "")}`}>{t(locale, "WhatsApp us", "راسلنا على واتساب")}</a>
@@ -211,7 +211,7 @@ export async function ServicesPage({ locale }: { locale: Locale }) {
                 <p className="text-sm">{t(locale, "Delai", "المدة")}: {service.timeline[locale]}</p>
                 <p className="mt-2 text-sm text-muted-foreground">{service.idealFor[locale]}</p>
                 <Button asChild className="mt-4">
-                  <Link href={locale === "ar" ? "/ar/contact" : "/contact"}>{t(locale, "Nous contacter", "تواصل معنا")}</Link>
+                  <Link href={locale === "ar" ? "/ar/contact" : "/fr/contact"}>{t(locale, "Nous contacter", "تواصل معنا")}</Link>
                 </Button>
               </div>
             </CardContent>

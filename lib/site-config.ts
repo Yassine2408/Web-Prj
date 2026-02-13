@@ -15,12 +15,12 @@ export const siteConfig = {
 };
 
 export const navLinks = (locale: Locale) => [
-  { href: locale === "ar" ? "/ar/services" : "/services", label: locale === "ar" ? "الخدمات" : "Services" },
-  { href: locale === "ar" ? "/ar/pricing" : "/pricing", label: locale === "ar" ? "الأسعار" : "Tarifs" },
-  { href: locale === "ar" ? "/ar/work" : "/work", label: locale === "ar" ? "الأعمال" : "Réalisations" },
-  { href: locale === "ar" ? "/ar/blog" : "/blog", label: locale === "ar" ? "المدونة" : "Blog" },
-  { href: locale === "ar" ? "/ar/about" : "/about", label: locale === "ar" ? "من نحن" : "À propos" },
-  { href: locale === "ar" ? "/ar/contact" : "/contact", label: locale === "ar" ? "اتصل بنا" : "Contact" },
+  { href: locale === "ar" ? "/ar/services" : "/fr/services", label: locale === "ar" ? "الخدمات" : "Services" },
+  { href: locale === "ar" ? "/ar/pricing" : "/fr/pricing", label: locale === "ar" ? "الأسعار" : "Tarifs" },
+  { href: locale === "ar" ? "/ar/work" : "/fr/work", label: locale === "ar" ? "الأعمال" : "Réalisations" },
+  { href: locale === "ar" ? "/ar/blog" : "/fr/blog", label: locale === "ar" ? "المدونة" : "Blog" },
+  { href: locale === "ar" ? "/ar/about" : "/fr/about", label: locale === "ar" ? "من نحن" : "À propos" },
+  { href: locale === "ar" ? "/ar/contact" : "/fr/contact", label: locale === "ar" ? "اتصل بنا" : "Contact" },
 ];
 
 export function localePath(locale: Locale, path: string) {

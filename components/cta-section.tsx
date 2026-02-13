@@ -18,7 +18,7 @@ export function CTASection({ locale }: { locale: Locale }) {
       </p>
       <div className="mt-5 flex flex-wrap gap-3">
         <Button asChild>
-          <Link href={isAr ? "/ar/contact" : "/contact"}>
+          <Link href={isAr ? "/ar/contact" : "/fr/contact"}>
             {isAr ? "اطلب عرض سعر" : "Demander un devis"}
           </Link>
         </Button>

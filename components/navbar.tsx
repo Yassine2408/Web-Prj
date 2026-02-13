@@ -10,7 +10,7 @@ import type { Locale } from "@/lib/types";
 
 export function Navbar({ locale }: { locale: Locale }) {
   const links = navLinks(locale);
-  const contactHref = locale === "ar" ? "/ar/contact" : "/contact";
+  const contactHref = locale === "ar" ? "/ar/contact" : "/fr/contact";
   const logoUrl = process.env.NEXT_PUBLIC_LOGO_URL;
   const hasLocalLogo = Boolean(logoUrl && logoUrl.startsWith("/"));
 

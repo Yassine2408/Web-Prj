@@ -9,15 +9,19 @@ import { navLinks } from "@/lib/site-config";
 import type { Locale } from "@/lib/types";
 
 function toArabicPath(pathname: string) {
-  if (pathname === "/") return "/ar";
+  if (pathname === "/" || pathname === "/fr") return "/ar";
   if (pathname.startsWith("/ar")) return pathname;
+  if (pathname.startsWith("/fr/")) return pathname.replace("/fr", "/ar");
+  if (pathname.startsWith("/fr")) return pathname.replace("/fr", "/ar");
   return `/ar${pathname}`;
 }
 
 function toFrenchPath(pathname: string) {
-  if (pathname === "/ar") return "/";
-  if (pathname.startsWith("/ar/")) return pathname.replace("/ar", "");
-  return pathname;
+  if (pathname === "/" || pathname === "/ar") return "/fr";
+  if (pathname.startsWith("/fr")) return pathname;
+  if (pathname.startsWith("/ar/")) return pathname.replace("/ar", "/fr");
+  if (pathname.startsWith("/ar")) return pathname.replace("/ar", "/fr");
+  return `/fr${pathname}`;
 }
 
 export function MobileNav({ locale }: { locale: Locale }) {
