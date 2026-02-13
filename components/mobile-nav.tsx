@@ -2,16 +2,32 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Menu, X, Moon, Sun } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { Menu, X, Moon, Sun, Languages } from "lucide-react";
 import { useTheme } from "next-themes";
 import { navLinks } from "@/lib/site-config";
 import type { Locale } from "@/lib/types";
+
+function toArabicPath(pathname: string) {
+  if (pathname === "/") return "/ar";
+  if (pathname.startsWith("/ar")) return pathname;
+  return `/ar${pathname}`;
+}
+
+function toFrenchPath(pathname: string) {
+  if (pathname === "/ar") return "/";
+  if (pathname.startsWith("/ar/")) return pathname.replace("/ar", "");
+  return pathname;
+}
 
 export function MobileNav({ locale }: { locale: Locale }) {
   const [isOpen, setIsOpen] = useState(false);
   const links = navLinks(locale);
   const { setTheme, resolvedTheme } = useTheme();
   const isDark = resolvedTheme === "dark";
+  const pathname = usePathname();
+  const frPath = toFrenchPath(pathname);
+  const arPath = toArabicPath(pathname);
 
   return (
     <div className="lg:hidden">
@@ -45,6 +61,40 @@ export function MobileNav({ locale }: { locale: Locale }) {
               {isDark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
               <span>{isDark ? "Mode clair" : "Mode sombre"}</span>
             </button>
+
+            {/* Language Switcher */}
+            <div className="border-t border-border/70 pt-3">
+              <div className="flex items-center gap-2 px-3 pb-2">
+                <Languages className="h-4 w-4 text-muted-foreground" />
+                <span className="text-xs font-medium text-muted-foreground">
+                  {locale === "ar" ? "اللغة" : "Langue"}
+                </span>
+              </div>
+              <div className="grid grid-cols-2 gap-2 px-3">
+                <Link
+                  href={frPath}
+                  onClick={() => setIsOpen(false)}
+                  className={`rounded-lg px-3 py-2 text-center text-sm font-medium ${
+                    locale === "fr"
+                      ? "bg-primary text-primary-foreground"
+                      : "border border-border hover:bg-muted"
+                  }`}
+                >
+                  Français
+                </Link>
+                <Link
+                  href={arPath}
+                  onClick={() => setIsOpen(false)}
+                  className={`rounded-lg px-3 py-2 text-center text-sm font-medium ${
+                    locale === "ar"
+                      ? "bg-primary text-primary-foreground"
+                      : "border border-border hover:bg-muted"
+                  }`}
+                >
+                  العربية
+                </Link>
+              </div>
+            </div>
           </nav>
         </div>
       )}
