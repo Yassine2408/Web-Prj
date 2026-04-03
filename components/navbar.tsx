@@ -12,14 +12,14 @@ export function Navbar({ locale }: { locale: Locale }) {
   const links = navLinks(locale);
   const contactHref = locale === "ar" ? "/ar/contact" : "/fr/contact";
   const envLogoUrl = process.env.NEXT_PUBLIC_LOGO_URL;
+  const normalizedLogoUrl = envLogoUrl?.replace(/^\/logo\//, "/Logo/");
   const logoUrl =
-    !envLogoUrl ||
-    envLogoUrl === "/Logo/Logo.png" ||
-    envLogoUrl === "/logo/Logo.png" ||
-    envLogoUrl === "/logo/sitara-wordmark.jpg" ||
-    envLogoUrl === "/logo/sitara-wordmark-transparent.png"
-      ? "/logo/sitara-wordmark-tight.png"
-      : envLogoUrl;
+    !normalizedLogoUrl ||
+    normalizedLogoUrl === "/Logo/Logo.png" ||
+    normalizedLogoUrl === "/Logo/sitara-wordmark.jpg" ||
+    normalizedLogoUrl === "/Logo/sitara-wordmark-transparent.png"
+      ? "/Logo/sitara-wordmark-tight.png"
+      : normalizedLogoUrl;
   const hasLocalLogo = Boolean(logoUrl.startsWith("/"));
 
   return (
