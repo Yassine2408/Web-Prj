@@ -13,6 +13,7 @@ export type CaseStudy = {
   slug: string;
   title: Record<Locale, string>;
   clientType: Record<Locale, string>;
+  liveUrl?: string;
   city: string;
   problem: Record<Locale, string>;
   solution: Record<Locale, string>;
