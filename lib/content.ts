@@ -104,6 +104,27 @@ const fallbackServices: Service[] = [
 
 const fallbackCaseStudies: CaseStudy[] = [
   {
+    slug: "kenitra-fashion",
+    title: { fr: "Kenitra Fashion", ar: "قنيطرة فاشن" },
+    clientType: { fr: "Projet client mode", ar: "مشروع عميل للأزياء" },
+    liveUrl: "https://kenitra-fashion.vercel.app/",
+    city: "Kénitra",
+    problem: {
+      fr: "La marque avait besoin d'une présence premium, mobile-first, avec conversion WhatsApp rapide.",
+      ar: "العلامة احتاجت حضورًا بصريًا احترافيًا متوافقًا مع الهاتف مع تحويل سريع عبر واتساب.",
+    },
+    solution: {
+      fr: "Landing immersive avec hero impactant, sections collections et CTA WhatsApp direct pour la commande.",
+      ar: "صفحة هبوط غامرة مع هيرو قوي وأقسام للمنتجات وأزرار طلب مباشرة عبر واتساب.",
+    },
+    tech: ["Next.js", "Vercel", "WhatsApp CTA", "Responsive UI"],
+    results: {
+      fr: ["Identité visuelle forte", "Navigation fluide mobile/desktop", "Tunnel de conversion WhatsApp simplifié"],
+      ar: ["هوية بصرية قوية", "تجربة سلسة على الهاتف والكمبيوتر", "مسار طلب واتساب مبسط"],
+    },
+    gallery: ["/images/projects/kenitra-fashion-preview.png"],
+  },
+  {
     slug: "parapharmacie-casablanca",
     title: { fr: "Projet pilote Parapharmacie", ar: "مشروع تجريبي بارافارماسي" },
     clientType: { fr: "Simulation parapharmacie", ar: "محاكاة بارافارماسي" },

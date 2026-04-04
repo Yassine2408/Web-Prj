@@ -143,6 +143,11 @@ export async function HomePage({ locale }: { locale: Locale }) {
         <div className="mt-5 grid gap-4 md:grid-cols-3">
           {work.slice(0, 3).map((item) => (
             <Card key={item.slug} className="rounded-2xl">
+              {item.gallery?.[0] ? (
+                <div className="aspect-[16/9] overflow-hidden rounded-t-2xl border-b border-border/60">
+                  <img src={item.gallery[0]} alt={item.title[locale]} className="h-full w-full object-cover" loading="lazy" />
+                </div>
+              ) : null}
               <CardHeader>
                 <CardTitle>{item.title[locale]}</CardTitle>
               </CardHeader>
@@ -313,15 +318,29 @@ export async function WorkPage({ locale }: { locale: Locale }) {
       <div className="grid gap-4 md:grid-cols-3">
         {work.map((item) => (
           <Card key={item.slug} className="rounded-2xl">
+            {item.gallery?.[0] ? (
+              <div className="aspect-[16/9] overflow-hidden rounded-t-2xl border-b border-border/60">
+                <img src={item.gallery[0]} alt={item.title[locale]} className="h-full w-full object-cover" loading="lazy" />
+              </div>
+            ) : null}
             <CardHeader>
               <CardTitle>{item.title[locale]}</CardTitle>
               <p className="text-sm text-muted-foreground">{item.clientType[locale]} - {item.city}</p>
             </CardHeader>
             <CardContent>
               <p className="text-sm text-muted-foreground">{item.solution[locale]}</p>
-              <Button asChild className="mt-4 w-full">
-                <Link href={(locale === "ar" ? "/ar/work/" : "/fr/work/") + item.slug}>{t(locale, "Voir le projet", "عرض المشروع")}</Link>
-              </Button>
+              <div className="mt-4 grid gap-2">
+                <Button asChild className="w-full">
+                  <Link href={(locale === "ar" ? "/ar/work/" : "/fr/work/") + item.slug}>{t(locale, "Voir le projet", "عرض المشروع")}</Link>
+                </Button>
+                {item.liveUrl ? (
+                  <Button asChild variant="outline" className="w-full">
+                    <a href={item.liveUrl} target="_blank" rel="noreferrer">
+                      {t(locale, "Visiter le site", "زيارة الموقع")}
+                    </a>
+                  </Button>
+                ) : null}
+              </div>
             </CardContent>
           </Card>
         ))}
@@ -339,6 +358,18 @@ export async function WorkDetailPage({ locale, slug }: { locale: Locale; slug: s
     <div className="space-y-6">
       <h1 className="text-4xl font-semibold">{item.title[locale]}</h1>
       <p className="text-muted-foreground">{item.clientType[locale]} - {item.city}</p>
+      {item.gallery?.[0] ? (
+        <Card className="overflow-hidden rounded-2xl p-0">
+          <img src={item.gallery[0]} alt={item.title[locale]} className="h-auto w-full object-cover" />
+        </Card>
+      ) : null}
+      {item.liveUrl ? (
+        <Button asChild>
+          <a href={item.liveUrl} target="_blank" rel="noreferrer">
+            {t(locale, "Visiter le site en ligne", "زيارة الموقع مباشر")}
+          </a>
+        </Button>
+      ) : null}
       <Card className="rounded-2xl">
         <CardHeader>
           <CardTitle>{t(locale, "Probleme", "المشكل")}</CardTitle>
