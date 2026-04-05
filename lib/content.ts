@@ -1,4 +1,4 @@
-﻿import { cache } from "react";
+import { cache } from "react";
 import { createClient } from "@sanity/client";
 import { groq } from "next-sanity";
 import type { BlogPost, CaseStudy, FaqItem, Service, Testimonial } from "@/lib/types";
@@ -6,121 +6,121 @@ import type { BlogPost, CaseStudy, FaqItem, Service, Testimonial } from "@/lib/t
 const fallbackServices: Service[] = [
   {
     id: "business-website",
-    title: { fr: "Site vitrine rapide + SEO", ar: "Ù…ÙˆÙ‚Ø¹ Ø£Ø¹Ù…Ø§Ù„ Ø³Ø±ÙŠØ¹ Ù…Ø¹ SEO" },
+    title: { fr: "Site vitrine rapide + SEO", ar: "موقع أعمال سريع مع SEO" },
     summary: {
-      fr: "Site clair, rapide et prÃªt Ã  convertir vos visiteurs locaux.",
-      ar: "Ù…ÙˆÙ‚Ø¹ ÙˆØ§Ø¶Ø­ ÙˆØ³Ø±ÙŠØ¹ ÙŠØ³Ø§Ø¹Ø¯Ùƒ Ø¹Ù„Ù‰ ØªØ­ÙˆÙŠÙ„ Ø§Ù„Ø²ÙˆØ§Ø± Ø§Ù„Ù…Ø­Ù„ÙŠÙŠÙ† Ø¥Ù„Ù‰ Ø¹Ù…Ù„Ø§Ø¡.",
+      fr: "Site clair, rapide et prêt à convertir vos visiteurs locaux.",
+      ar: "موقع واضح وسريع يساعدك على تحويل الزوار المحليين إلى عملاء.",
     },
     deliverables: {
       fr: ["Design premium", "Pages services", "Optimisation Core Web Vitals", "SEO local de base"],
-      ar: ["ØªØµÙ…ÙŠÙ… Ø§Ø­ØªØ±Ø§ÙÙŠ", "ØµÙØ­Ø§Øª Ø§Ù„Ø®Ø¯Ù…Ø§Øª", "ØªØ­Ø³ÙŠÙ† Ø§Ù„Ø³Ø±Ø¹Ø©", "ØªÙ‡ÙŠØ¦Ø© SEO Ù…Ø­Ù„ÙŠ"],
+      ar: ["تصميم احترافي", "صفحات الخدمات", "تحسين السرعة", "تهيئة SEO محلي"],
     },
-    timeline: { fr: "2 Ã  4 semaines", ar: "Ù…Ù† Ø£Ø³Ø¨ÙˆØ¹ÙŠÙ† Ø¥Ù„Ù‰ 4 Ø£Ø³Ø§Ø¨ÙŠØ¹" },
+    timeline: { fr: "2 à 4 semaines", ar: "من أسبوعين إلى 4 أسابيع" },
     idealFor: {
       fr: "Cabinets, cliniques, salons, restaurants, commerces.",
-      ar: "Ù„Ù„Ø¹ÙŠØ§Ø¯Ø§Øª ÙˆØ§Ù„ØµØ§Ù„ÙˆÙ†Ø§Øª ÙˆØ§Ù„Ù…Ø·Ø§Ø¹Ù… ÙˆØ§Ù„Ù…ØªØ§Ø¬Ø±.",
+      ar: "للعيادات والصالونات والمطاعم والمتاجر.",
     },
   },
   {
     id: "local-seo",
-    title: { fr: "SEO local + Google Business Profile", ar: "SEO Ù…Ø­Ù„ÙŠ + Ù…Ù„Ù Google Business" },
+    title: { fr: "SEO local + Google Business Profile", ar: "SEO محلي + ملف Google Business" },
     summary: {
-      fr: "Soyez visible sur Google Maps Ã  Casablanca, Rabat, KÃ©nitra et au-delÃ .",
-      ar: "Ø§Ù„Ø¸Ù‡ÙˆØ± ÙÙŠ Google Maps ÙÙŠ Ø§Ù„Ø¯Ø§Ø± Ø§Ù„Ø¨ÙŠØ¶Ø§Ø¡ ÙˆØ§Ù„Ø±Ø¨Ø§Ø· ÙˆØ§Ù„Ù‚Ù†ÙŠØ·Ø±Ø© ÙˆØºÙŠØ±Ù‡Ø§.",
+      fr: "Soyez visible sur Google Maps à Casablanca, Rabat, Kénitra et au-delà.",
+      ar: "الظهور في Google Maps في الدار البيضاء والرباط والقنيطرة وغيرها.",
     },
     deliverables: {
       fr: ["Audit local", "Optimisation fiche GBP", "Citations locales", "Collecte d'avis"],
-      ar: ["ØªØ¯Ù‚ÙŠÙ‚ Ù…Ø­Ù„ÙŠ", "ØªØ­Ø³ÙŠÙ† Ø§Ù„Ù…Ù„Ù Ø§Ù„ØªØ¬Ø§Ø±ÙŠ", "Ø¥Ø¯Ø±Ø§Ø¬Ø§Øª Ù…Ø­Ù„ÙŠØ©", "Ø®Ø·Ø© ØªÙ‚ÙŠÙŠÙ…Ø§Øª Ø§Ù„Ø¹Ù…Ù„Ø§Ø¡"],
+      ar: ["تدقيق محلي", "تحسين الملف التجاري", "إدراجات محلية", "خطة تقييمات العملاء"],
     },
-    timeline: { fr: "3 Ã  6 semaines", ar: "Ù…Ù† 3 Ø¥Ù„Ù‰ 6 Ø£Ø³Ø§Ø¨ÙŠØ¹" },
+    timeline: { fr: "3 à 6 semaines", ar: "من 3 إلى 6 أسابيع" },
     idealFor: {
-      fr: "Tout business local dÃ©pendant de la proximitÃ©.",
-      ar: "Ù„ÙƒÙ„ Ù†Ø´Ø§Ø· Ù…Ø­Ù„ÙŠ ÙŠØ¹ØªÙ…Ø¯ Ø¹Ù„Ù‰ Ø§Ù„Ø¹Ù…Ù„Ø§Ø¡ Ø§Ù„Ù‚Ø±ÙŠØ¨ÙŠÙ†.",
+      fr: "Tout business local dépendant de la proximité.",
+      ar: "لكل نشاط محلي يعتمد على العملاء القريبين.",
     },
   },
   {
     id: "catalog-whatsapp",
-    title: { fr: "Catalogue + commande WhatsApp", ar: "ÙƒØªØ§Ù„ÙˆØ¬ + Ø§Ù„Ø·Ù„Ø¨ Ø¹Ø¨Ø± ÙˆØ§ØªØ³Ø§Ø¨" },
+    title: { fr: "Catalogue + commande WhatsApp", ar: "كتالوج + الطلب عبر واتساب" },
     summary: {
-      fr: "PrÃ©sentez vos produits et convertissez en conversation immÃ©diate.",
-      ar: "Ø§Ø¹Ø±Ø¶ Ù…Ù†ØªØ¬Ø§ØªÙƒ ÙˆØ­ÙˆÙ„ Ø§Ù„Ø·Ù„Ø¨ Ù…Ø¨Ø§Ø´Ø±Ø© Ø¥Ù„Ù‰ Ù…Ø­Ø§Ø¯Ø«Ø© ÙˆØ§ØªØ³Ø§Ø¨.",
+      fr: "Présentez vos produits et convertissez en conversation immédiate.",
+      ar: "اعرض منتجاتك وحول الطلب مباشرة إلى محادثة واتساب.",
     },
     deliverables: {
-      fr: ["CatÃ©gories produits", "CTA WhatsApp produit", "Templates message", "Tracking Ã©vÃ©nements"],
-      ar: ["ØªØµÙ†ÙŠÙØ§Øª Ø§Ù„Ù…Ù†ØªØ¬Ø§Øª", "Ø²Ø± ÙˆØ§ØªØ³Ø§Ø¨ Ù„ÙƒÙ„ Ù…Ù†ØªØ¬", "Ù‚ÙˆØ§Ù„Ø¨ Ø±Ø³Ø§Ø¦Ù„", "ØªØªØ¨Ø¹ Ø§Ù„Ø£Ø­Ø¯Ø§Ø«"],
+      fr: ["Catégories produits", "CTA WhatsApp produit", "Templates message", "Tracking événements"],
+      ar: ["تصنيفات المنتجات", "زر واتساب لكل منتج", "قوالب رسائل", "تتبع الأحداث"],
     },
-    timeline: { fr: "2 Ã  3 semaines", ar: "Ù…Ù† Ø£Ø³Ø¨ÙˆØ¹ÙŠÙ† Ø¥Ù„Ù‰ 3 Ø£Ø³Ø§Ø¨ÙŠØ¹" },
+    timeline: { fr: "2 à 3 semaines", ar: "من أسبوعين إلى 3 أسابيع" },
     idealFor: {
       fr: "Parapharmacies, boutiques locales, revendeurs.",
-      ar: "Ù„Ù„Ø¨Ø§Ø±Ø§ÙØ§Ø±Ù…Ø§Ø³ÙŠ ÙˆØ§Ù„Ù…ØªØ§Ø¬Ø± Ø§Ù„Ù…Ø­Ù„ÙŠØ©.",
+      ar: "للبارافارماسي والمتاجر المحلية.",
     },
   },
   {
     id: "ecommerce",
-    title: { fr: "E-commerce complet", ar: "Ù…ØªØ¬Ø± Ø¥Ù„ÙƒØªØ±ÙˆÙ†ÙŠ ÙƒØ§Ù…Ù„" },
+    title: { fr: "E-commerce complet", ar: "متجر إلكتروني كامل" },
     summary: {
-      fr: "Boutique prÃªte Ã  vendre avec CMI/NAPS/Payzone, COD et WhatsApp.",
-      ar: "Ù…ØªØ¬Ø± Ø¬Ø§Ù‡Ø² Ù„Ù„Ø¨ÙŠØ¹ Ù…Ø¹ CMI ÙˆNAPS ÙˆPayzone ÙˆØ§Ù„Ø¯ÙØ¹ Ø¹Ù†Ø¯ Ø§Ù„Ø§Ø³ØªÙ„Ø§Ù… ÙˆÙˆØ§ØªØ³Ø§Ø¨.",
+      fr: "Boutique prête à vendre avec CMI/NAPS/Payzone, COD et WhatsApp.",
+      ar: "متجر جاهز للبيع مع CMI وNAPS وPayzone والدفع عند الاستلام وواتساب.",
     },
     deliverables: {
-      fr: ["Checkout optimisÃ©", "Paiement marocain", "RÃ¨gles livraison", "Emails transactionnels"],
-      ar: ["ØµÙØ­Ø© Ø¯ÙØ¹ Ù…Ø­Ø³Ù†Ø©", "Ø±Ø¨Ø· Ø§Ù„Ø¯ÙØ¹ Ø§Ù„Ù…ØºØ±Ø¨ÙŠ", "Ù‚ÙˆØ§Ø¹Ø¯ Ø§Ù„Ø´Ø­Ù†", "Ø±Ø³Ø§Ø¦Ù„ Ø§Ù„Ù…Ø¹Ø§Ù…Ù„Ø§Øª"],
+      fr: ["Checkout optimisé", "Paiement marocain", "Règles livraison", "Emails transactionnels"],
+      ar: ["صفحة دفع محسنة", "ربط الدفع المغربي", "قواعد الشحن", "رسائل المعاملات"],
     },
-    timeline: { fr: "4 Ã  8 semaines", ar: "Ù…Ù† 4 Ø¥Ù„Ù‰ 8 Ø£Ø³Ø§Ø¨ÙŠØ¹" },
+    timeline: { fr: "4 à 8 semaines", ar: "من 4 إلى 8 أسابيع" },
     idealFor: {
-      fr: "CommerÃ§ants avec catalogue et logistique active.",
-      ar: "Ù„Ù„Ù…ØªØ§Ø¬Ø± Ø§Ù„ØªÙŠ ØªÙ…Ù„Ùƒ ÙƒØªØ§Ù„ÙˆØ¬Ù‹Ø§ ÙˆØ´Ø­Ù†Ù‹Ø§ ÙØ¹Ù‘Ø§Ù„Ù‹Ø§.",
+      fr: "Commerçants avec catalogue et logistique active.",
+      ar: "للمتاجر التي تملك كتالوجًا وشحنًا فعّالًا.",
     },
   },
   {
     id: "booking",
-    title: { fr: "RÃ©servations et rendez-vous", ar: "Ø§Ù„Ø­Ø¬ÙˆØ²Ø§Øª ÙˆØ§Ù„Ù…ÙˆØ§Ø¹ÙŠØ¯" },
+    title: { fr: "Réservations et rendez-vous", ar: "الحجوزات والمواعيد" },
     summary: {
-      fr: "SystÃ¨me simple pour rÃ©duire les appels et no-shows.",
-      ar: "Ù†Ø¸Ø§Ù… Ø¨Ø³ÙŠØ· Ù„ØªÙ‚Ù„ÙŠÙ„ Ø§Ù„Ø§ØªØµØ§Ù„Ø§Øª ÙˆØªÙØ§Ø¯ÙŠ ØºÙŠØ§Ø¨ Ø§Ù„Ø¹Ù…Ù„Ø§Ø¡.",
+      fr: "Système simple pour réduire les appels et no-shows.",
+      ar: "نظام بسيط لتقليل الاتصالات وتفادي غياب العملاء.",
     },
     deliverables: {
       fr: ["Calendrier", "Confirmation WhatsApp", "Rappels", "Formulaire qualification"],
-      ar: ["ØªÙ‚ÙˆÙŠÙ…", "ØªØ£ÙƒÙŠØ¯ Ø¹Ø¨Ø± ÙˆØ§ØªØ³Ø§Ø¨", "ØªØ°ÙƒÙŠØ± ØªÙ„Ù‚Ø§Ø¦ÙŠ", "Ù†Ù…ÙˆØ°Ø¬ Ø¨ÙŠØ§Ù†Ø§Øª Ø§Ù„Ø¹Ù…ÙŠÙ„"],
+      ar: ["تقويم", "تأكيد عبر واتساب", "تذكير تلقائي", "نموذج بيانات العميل"],
     },
-    timeline: { fr: "2 Ã  4 semaines", ar: "Ù…Ù† Ø£Ø³Ø¨ÙˆØ¹ÙŠÙ† Ø¥Ù„Ù‰ 4 Ø£Ø³Ø§Ø¨ÙŠØ¹" },
-    idealFor: { fr: "Cliniques, dentistes, salons.", ar: "Ù„Ù„Ø¹ÙŠØ§Ø¯Ø§Øª ÙˆØ£Ø·Ø¨Ø§Ø¡ Ø§Ù„Ø£Ø³Ù†Ø§Ù† ÙˆØ§Ù„ØµØ§Ù„ÙˆÙ†Ø§Øª." },
+    timeline: { fr: "2 à 4 semaines", ar: "من أسبوعين إلى 4 أسابيع" },
+    idealFor: { fr: "Cliniques, dentistes, salons.", ar: "للعيادات وأطباء الأسنان والصالونات." },
   },
   {
     id: "maintenance",
-    title: { fr: "Maintenance & sÃ©curitÃ©", ar: "Ø§Ù„ØµÙŠØ§Ù†Ø© ÙˆØ§Ù„Ø£Ù…Ø§Ù†" },
+    title: { fr: "Maintenance & sécurité", ar: "الصيانة والأمان" },
     summary: {
-      fr: "Mises Ã  jour, sauvegardes, monitoring et support continu.",
-      ar: "ØªØ­Ø¯ÙŠØ«Ø§Øª ÙˆÙ†Ø³Ø® Ø§Ø­ØªÙŠØ§Ø·ÙŠ ÙˆÙ…Ø±Ø§Ù‚Ø¨Ø© ÙˆØ¯Ø¹Ù… Ù…Ø³ØªÙ…Ø±.",
+      fr: "Mises à jour, sauvegardes, monitoring et support continu.",
+      ar: "تحديثات ونسخ احتياطي ومراقبة ودعم مستمر.",
     },
     deliverables: {
-      fr: ["Patch sÃ©curitÃ©", "Backups", "Monitoring uptime", "AmÃ©liorations mensuelles"],
-      ar: ["ØªØ­Ø¯ÙŠØ«Ø§Øª Ø£Ù…Ø§Ù†", "Ù†Ø³Ø® Ø§Ø­ØªÙŠØ§Ø·ÙŠØ©", "Ù…Ø±Ø§Ù‚Ø¨Ø© Ø§Ù„ØªÙˆÙØ±", "ØªØ­Ø³ÙŠÙ†Ø§Øª Ø´Ù‡Ø±ÙŠØ©"],
+      fr: ["Patch sécurité", "Backups", "Monitoring uptime", "Améliorations mensuelles"],
+      ar: ["تحديثات أمان", "نسخ احتياطية", "مراقبة التوفر", "تحسينات شهرية"],
     },
-    timeline: { fr: "Plan mensuel", ar: "Ø®Ø·Ø© Ø´Ù‡Ø±ÙŠØ©" },
-    idealFor: { fr: "Entreprises qui veulent la tranquillitÃ©.", ar: "Ù„Ù„Ø´Ø±ÙƒØ§Øª Ø§Ù„ØªÙŠ ØªØ±ÙŠØ¯ Ø±Ø§Ø­Ø© Ø§Ù„Ø¨Ø§Ù„." },
+    timeline: { fr: "Plan mensuel", ar: "خطة شهرية" },
+    idealFor: { fr: "Entreprises qui veulent la tranquillité.", ar: "للشركات التي تريد راحة البال." },
   },
 ];
 
 const fallbackCaseStudies: CaseStudy[] = [
   {
     slug: "kenitra-fashion",
-    title: { fr: "Kenitra Fashion", ar: "Ù‚Ù†ÙŠØ·Ø±Ø© ÙØ§Ø´Ù†" },
-    clientType: { fr: "Projet client mode", ar: "Ù…Ø´Ø±ÙˆØ¹ Ø¹Ù…ÙŠÙ„ Ù„Ù„Ø£Ø²ÙŠØ§Ø¡" },
+    title: { fr: "Kenitra Fashion", ar: "قنيطرة فاشن" },
+    clientType: { fr: "Projet client mode", ar: "مشروع عميل للأزياء" },
     liveUrl: "https://kenitra-fashion.vercel.app/",
-    city: "KÃ©nitra",
+    city: "Kénitra",
     problem: {
-      fr: "La marque avait besoin d'une prÃ©sence premium, mobile-first, avec conversion WhatsApp rapide.",
-      ar: "Ø§Ù„Ø¹Ù„Ø§Ù…Ø© Ø§Ø­ØªØ§Ø¬Øª Ø­Ø¶ÙˆØ±Ù‹Ø§ Ø¨ØµØ±ÙŠÙ‹Ø§ Ø§Ø­ØªØ±Ø§ÙÙŠÙ‹Ø§ Ù…ØªÙˆØ§ÙÙ‚Ù‹Ø§ Ù…Ø¹ Ø§Ù„Ù‡Ø§ØªÙ Ù…Ø¹ ØªØ­ÙˆÙŠÙ„ Ø³Ø±ÙŠØ¹ Ø¹Ø¨Ø± ÙˆØ§ØªØ³Ø§Ø¨.",
+      fr: "La marque avait besoin d'une présence premium, mobile-first, avec conversion WhatsApp rapide.",
+      ar: "العلامة احتاجت حضورًا بصريًا احترافيًا متوافقًا مع الهاتف مع تحويل سريع عبر واتساب.",
     },
     solution: {
       fr: "Landing immersive avec hero impactant, sections collections et CTA WhatsApp direct pour la commande.",
-      ar: "ØµÙØ­Ø© Ù‡Ø¨ÙˆØ· ØºØ§Ù…Ø±Ø© Ù…Ø¹ Ù‡ÙŠØ±Ùˆ Ù‚ÙˆÙŠ ÙˆØ£Ù‚Ø³Ø§Ù… Ù„Ù„Ù…Ù†ØªØ¬Ø§Øª ÙˆØ£Ø²Ø±Ø§Ø± Ø·Ù„Ø¨ Ù…Ø¨Ø§Ø´Ø±Ø© Ø¹Ø¨Ø± ÙˆØ§ØªØ³Ø§Ø¨.",
+      ar: "صفحة هبوط غامرة مع هيرو قوي وأقسام للمنتجات وأزرار طلب مباشرة عبر واتساب.",
     },
     tech: ["Next.js", "Vercel", "WhatsApp CTA", "Responsive UI"],
     results: {
-      fr: ["IdentitÃ© visuelle forte", "Navigation fluide mobile/desktop", "Tunnel de conversion WhatsApp simplifiÃ©"],
-      ar: ["Ù‡ÙˆÙŠØ© Ø¨ØµØ±ÙŠØ© Ù‚ÙˆÙŠØ©", "ØªØ¬Ø±Ø¨Ø© Ø³Ù„Ø³Ø© Ø¹Ù„Ù‰ Ø§Ù„Ù‡Ø§ØªÙ ÙˆØ§Ù„ÙƒÙ…Ø¨ÙŠÙˆØªØ±", "Ù…Ø³Ø§Ø± Ø·Ù„Ø¨ ÙˆØ§ØªØ³Ø§Ø¨ Ù…Ø¨Ø³Ø·"],
+      fr: ["Identité visuelle forte", "Navigation fluide mobile/desktop", "Tunnel de conversion WhatsApp simplifié"],
+      ar: ["هوية بصرية قوية", "تجربة سلسة على الهاتف والكمبيوتر", "مسار طلب واتساب مبسط"],
     },
     gallery: ["/images/projects/kenitra-fashion-preview.png"],
   },
@@ -154,62 +154,91 @@ const fallbackCaseStudies: CaseStudy[] = [
     gallery: ["/images/projects/yoga-website-preview.png"],
   },
   {
-    slug: "parapharmacie-casablanca",
-    title: { fr: "Projet pilote Parapharmacie", ar: "Ù…Ø´Ø±ÙˆØ¹ ØªØ¬Ø±ÙŠØ¨ÙŠ Ø¨Ø§Ø±Ø§ÙØ§Ø±Ù…Ø§Ø³ÙŠ" },
-    clientType: { fr: "Simulation parapharmacie", ar: "Ù…Ø­Ø§ÙƒØ§Ø© Ø¨Ø§Ø±Ø§ÙØ§Ø±Ù…Ø§Ø³ÙŠ" },
-    city: "Casablanca",
+    slug: "barbell-club",
+    title: { fr: "Barbell Club", ar: "باربيل كلوب" },
+    clientType: { fr: "Projet pilote fitness (non officiel)", ar: "مشروع تجريبي لقاعة رياضية (غير رسمي)" },
+    liveUrl: "https://barbell-club.vercel.app/",
+    city: "Kénitra",
     problem: {
-      fr: "Scenario test: un commerce dÃ©pend des passages en boutique avec peu de visibilitÃ© locale.",
-      ar: "Ø³ÙŠÙ†Ø§Ø±ÙŠÙˆ Ø§Ø®ØªØ¨Ø§Ø±ÙŠ: Ù†Ø´Ø§Ø· ÙŠØ¹ØªÙ…Ø¯ Ø¹Ù„Ù‰ Ø§Ù„Ø²ÙˆØ§Ø± Ø§Ù„Ù…Ø¨Ø§Ø´Ø±ÙŠÙ† Ù…Ø¹ Ø¸Ù‡ÙˆØ± Ù…Ø­Ù„ÙŠ Ø¶Ø¹ÙŠÙ.",
+      fr: "Le club voulait une presence digitale plus moderne pour augmenter les inscriptions avec un parcours plus rapide et fluide.",
+      ar: "الهدف كان إنشاء حضور رقمي حديث يساعد القاعة على زيادة التسجيلات بمسار أسرع وأكثر سلاسة.",
     },
     solution: {
-      fr: "Prototype catalogue par catÃ©gories, bouton WhatsApp par produit et fiches promos.",
-      ar: "Ù†Ù…ÙˆØ°Ø¬ ÙƒØªØ§Ù„ÙˆØ¬ Ø­Ø³Ø¨ Ø§Ù„ÙØ¦Ø§Øª Ù…Ø¹ Ø²Ø± ÙˆØ§ØªØ³Ø§Ø¨ Ù„ÙƒÙ„ Ù…Ù†ØªØ¬ ÙˆØµÙØ­Ø§Øª Ø¹Ø±ÙˆØ¶.",
+      fr: "Creation d'un site vitrine orienté conversion avec sections offres claires, CTA visibles et navigation mobile-first pour faciliter l'inscription.",
+      ar: "تم إنشاء موقع تعريفي موجه للتحويل مع عروض واضحة وأزرار دعوة للإجراء بارزة وتجربة موبايل سلسة لتسهيل التسجيل.",
+    },
+    tech: ["Next.js", "Vercel", "Responsive UI", "Conversion-focused UX"],
+    results: {
+      fr: [
+        "Presentation plus professionnelle du club",
+        "Parcours d'inscription simplifie",
+        "Experience plus rapide et fluide sur mobile",
+      ],
+      ar: [
+        "عرض أكثر احترافية للنادي",
+        "مسار تسجيل أبسط للزوار",
+        "تجربة أسرع وأكثر سلاسة على الهاتف",
+      ],
+    },
+    gallery: ["/images/projects/barbell-club-preview.png"],
+  },
+  {
+    slug: "parapharmacie-casablanca",
+    title: { fr: "Projet pilote Parapharmacie", ar: "مشروع تجريبي بارافارماسي" },
+    clientType: { fr: "Simulation parapharmacie", ar: "محاكاة بارافارماسي" },
+    city: "Casablanca",
+    problem: {
+      fr: "Scenario test: un commerce dépend des passages en boutique avec peu de visibilité locale.",
+      ar: "سيناريو اختباري: نشاط يعتمد على الزوار المباشرين مع ظهور محلي ضعيف.",
+    },
+    solution: {
+      fr: "Prototype catalogue par catégories, bouton WhatsApp par produit et fiches promos.",
+      ar: "نموذج كتالوج حسب الفئات مع زر واتساب لكل منتج وصفحات عروض.",
     },
     tech: ["Next.js", "Sanity", "Cloudflare", "WhatsApp CTA"],
     results: {
       fr: ["Prototype fonctionnel livre", "Parcours commande WhatsApp valide", "Performance cible < 1.5s"],
-      ar: ["Ù†Ù…ÙˆØ°Ø¬ Ø¹Ù…Ù„ÙŠ Ø¬Ø§Ù‡Ø²", "Ù…Ø³Ø§Ø± Ø·Ù„Ø¨ ÙˆØ§ØªØ³Ø§Ø¨ Ù†Ø§Ø¬Ø­", "Ø³Ø±Ø¹Ø© Ù…Ø³ØªÙ‡Ø¯ÙØ© Ø£Ù‚Ù„ Ù…Ù† 1.5 Ø«Ø§Ù†ÙŠØ©"],
+      ar: ["نموذج عملي جاهز", "مسار طلب واتساب ناجح", "سرعة مستهدفة أقل من 1.5 ثانية"],
     },
     gallery: ["/images/placeholder-1.svg", "/images/placeholder-2.svg"],
   },
   {
     slug: "clinic-rabat",
-    title: { fr: "Projet pilote Clinique", ar: "Ù…Ø´Ø±ÙˆØ¹ ØªØ¬Ø±ÙŠØ¨ÙŠ Ø¹ÙŠØ§Ø¯Ø©" },
-    clientType: { fr: "Simulation clinique", ar: "Ù…Ø­Ø§ÙƒØ§Ø© Ø¹ÙŠØ§Ø¯Ø©" },
+    title: { fr: "Projet pilote Clinique", ar: "مشروع تجريبي عيادة" },
+    clientType: { fr: "Simulation clinique", ar: "محاكاة عيادة" },
     city: "Rabat",
     problem: {
       fr: "Scenario test: prise de rendez-vous manuelle et faible presence locale.",
-      ar: "Ø³ÙŠÙ†Ø§Ø±ÙŠÙˆ Ø§Ø®ØªØ¨Ø§Ø±ÙŠ: Ø­Ø¬Ø² ÙŠØ¯ÙˆÙŠ ÙˆØ­Ø¶ÙˆØ± Ù…Ø­Ù„ÙŠ Ø¶Ø¹ÙŠÙ.",
+      ar: "سيناريو اختباري: حجز يدوي وحضور محلي ضعيف.",
     },
     solution: {
       fr: "Prototype avec module rendez-vous, pages services et structure SEO locale.",
-      ar: "Ù†Ù…ÙˆØ°Ø¬ Ù…Ø¹ Ù†Ø¸Ø§Ù… Ù…ÙˆØ§Ø¹ÙŠØ¯ ÙˆØµÙØ­Ø§Øª Ø®Ø¯Ù…Ø§Øª ÙˆÙ‡ÙŠÙƒÙ„Ø© SEO Ù…Ø­Ù„ÙŠ.",
+      ar: "نموذج مع نظام مواعيد وصفحات خدمات وهيكلة SEO محلي.",
     },
     tech: ["Next.js", "Form Actions", "Schema SEO"],
     results: {
       fr: ["Tunnel rendez-vous valide", "Structure GBP prete", "UX mobile testee"],
-      ar: ["Ù…Ø³Ø§Ø± Ø§Ù„Ù…ÙˆØ§Ø¹ÙŠØ¯ Ø¬Ø§Ù‡Ø²", "Ø¨Ù†ÙŠØ© GBP Ø¬Ø§Ù‡Ø²Ø©", "ØªØ¬Ø±Ø¨Ø© Ø§Ù„Ù‡Ø§ØªÙ ØªÙ… Ø§Ø®ØªØ¨Ø§Ø±Ù‡Ø§"],
+      ar: ["مسار المواعيد جاهز", "بنية GBP جاهزة", "تجربة الهاتف تم اختبارها"],
     },
     gallery: ["/images/placeholder-3.svg", "/images/placeholder-4.svg"],
   },
   {
     slug: "local-shop-kenitra",
-    title: { fr: "Projet pilote Boutique KÃ©nitra", ar: "Ù…Ø´Ø±ÙˆØ¹ ØªØ¬Ø±ÙŠØ¨ÙŠ Ù…ØªØ¬Ø± Ø§Ù„Ù‚Ù†ÙŠØ·Ø±Ø©" },
-    clientType: { fr: "Simulation boutique locale", ar: "Ù…Ø­Ø§ÙƒØ§Ø© Ù…ØªØ¬Ø± Ù…Ø­Ù„ÙŠ" },
-    city: "KÃ©nitra",
+    title: { fr: "Projet pilote Boutique Kénitra", ar: "مشروع تجريبي متجر القنيطرة" },
+    clientType: { fr: "Simulation boutique locale", ar: "محاكاة متجر محلي" },
+    city: "Kénitra",
     problem: {
       fr: "Scenario test: pas de catalogue en ligne et commandes uniquement en DM.",
-      ar: "Ø³ÙŠÙ†Ø§Ø±ÙŠÙˆ Ø§Ø®ØªØ¨Ø§Ø±ÙŠ: Ù„Ø§ ÙŠÙˆØ¬Ø¯ ÙƒØªØ§Ù„ÙˆØ¬ Ø±Ù‚Ù…ÙŠ ÙˆØ§Ù„Ø·Ù„Ø¨Ø§Øª ÙÙ‚Ø· Ø¹Ø¨Ø± Ø§Ù„Ø±Ø³Ø§Ø¦Ù„.",
+      ar: "سيناريو اختباري: لا يوجد كتالوج رقمي والطلبات فقط عبر الرسائل.",
     },
     solution: {
       fr: "Mini catalogue e-commerce avec COD, pre-integration paiement marocain et pages promos.",
-      ar: "ÙƒØªØ§Ù„ÙˆØ¬-Ù…ØªØ¬Ø± Ù…ØµØºØ± Ù…Ø¹ Ø§Ù„Ø¯ÙØ¹ Ø¹Ù†Ø¯ Ø§Ù„Ø§Ø³ØªÙ„Ø§Ù… ÙˆØªØ¬Ù‡ÙŠØ² Ø±Ø¨Ø· Ø§Ù„Ø¯ÙØ¹ Ø§Ù„Ù…Ø­Ù„ÙŠ ÙˆØµÙØ­Ø§Øª Ø¹Ø±ÙˆØ¶.",
+      ar: "كتالوج-متجر مصغر مع الدفع عند الاستلام وتجهيز ربط الدفع المحلي وصفحات عروض.",
     },
     tech: ["Next.js", "CMI-ready checkout", "Cloudflare Pages"],
     results: {
       fr: ["Stack e-commerce de base prete", "Parcours commande simplifie", "Base de lancement pour vrai projet"],
-      ar: ["Ø¨Ù†ÙŠØ© Ù…ØªØ¬Ø± Ø£Ø³Ø§Ø³ÙŠØ© Ø¬Ø§Ù‡Ø²Ø©", "Ù…Ø³Ø§Ø± Ø·Ù„Ø¨ Ù…Ø¨Ø³Ø·", "Ù‚Ø§Ø¹Ø¯Ø© Ø¬Ø§Ù‡Ø²Ø© Ù„Ù…Ø´Ø±ÙˆØ¹ Ø­Ù‚ÙŠÙ‚ÙŠ"],
+      ar: ["بنية متجر أساسية جاهزة", "مسار طلب مبسط", "قاعدة جاهزة لمشروع حقيقي"],
     },
     gallery: ["/images/placeholder-5.svg", "/images/placeholder-6.svg"],
   },
@@ -219,28 +248,28 @@ const fallbackTestimonials: Testimonial[] = [
   {
     id: "t1",
     name: "Retour test #1",
-    business: { fr: "Projet pilote Parapharmacie", ar: "Ù…Ø´Ø±ÙˆØ¹ ØªØ¬Ø±ÙŠØ¨ÙŠ Ø¨Ø§Ø±Ø§ÙØ§Ø±Ù…Ø§Ø³ÙŠ" },
+    business: { fr: "Projet pilote Parapharmacie", ar: "مشروع تجريبي بارافارماسي" },
     quote: {
       fr: "Prototype propre et clair. Le parcours WhatsApp est simple pour l'utilisateur final.",
-      ar: "Ø§Ù„Ù†Ù…ÙˆØ°Ø¬ ÙˆØ§Ø¶Ø­ ÙˆØ³Ù‡Ù„. Ù…Ø³Ø§Ø± Ø§Ù„Ø·Ù„Ø¨ Ø¹Ø¨Ø± ÙˆØ§ØªØ³Ø§Ø¨ Ø¨Ø³ÙŠØ· Ù„Ù„Ù…Ø³ØªØ®Ø¯Ù….",
+      ar: "النموذج واضح وسهل. مسار الطلب عبر واتساب بسيط للمستخدم.",
     },
   },
   {
     id: "t2",
     name: "Retour test #2",
-    business: { fr: "Projet pilote Clinique", ar: "Ù…Ø´Ø±ÙˆØ¹ ØªØ¬Ø±ÙŠØ¨ÙŠ Ø¹ÙŠØ§Ø¯Ø©" },
+    business: { fr: "Projet pilote Clinique", ar: "مشروع تجريبي عيادة" },
     quote: {
-      fr: "La structure SEO locale et la prise de rendez-vous sont prÃªtes pour un vrai lancement client.",
-      ar: "Ù‡ÙŠÙƒÙ„Ø© SEO Ø§Ù„Ù…Ø­Ù„ÙŠØ© ÙˆÙ†Ø¸Ø§Ù… Ø§Ù„Ù…ÙˆØ§Ø¹ÙŠØ¯ Ø¬Ø§Ù‡Ø²Ø§Ù† Ù„Ø¥Ø·Ù„Ø§Ù‚ ÙØ¹Ù„ÙŠ Ù…Ø¹ Ø¹Ù…ÙŠÙ„.",
+      fr: "La structure SEO locale et la prise de rendez-vous sont prêtes pour un vrai lancement client.",
+      ar: "هيكلة SEO المحلية ونظام المواعيد جاهزان لإطلاق فعلي مع عميل.",
     },
   },
   {
     id: "t3",
     name: "Retour test #3",
-    business: { fr: "Projet pilote Boutique", ar: "Ù…Ø´Ø±ÙˆØ¹ ØªØ¬Ø±ÙŠØ¨ÙŠ Ù…ØªØ¬Ø±" },
+    business: { fr: "Projet pilote Boutique", ar: "مشروع تجريبي متجر" },
     quote: {
       fr: "Le workflow catalogue + WhatsApp est pratique et facile a maintenir.",
-      ar: "Ù…Ø³Ø§Ø± Ø§Ù„ÙƒØªØ§Ù„ÙˆØ¬ + ÙˆØ§ØªØ³Ø§Ø¨ Ø¹Ù…Ù„ÙŠ ÙˆØ³Ù‡Ù„ Ø§Ù„ØµÙŠØ§Ù†Ø©.",
+      ar: "مسار الكتالوج + واتساب عملي وسهل الصيانة.",
     },
   },
 ];
@@ -249,34 +278,34 @@ const fallbackFaq: FaqItem[] = [
   {
     id: "f1",
     question: {
-      fr: "Est-ce que vous gÃ©rez les domaines .ma ?",
-      ar: "Ù‡Ù„ ØªÙˆÙØ±ÙˆÙ† Ø§Ù„Ù…Ø³Ø§Ø¹Ø¯Ø© ÙÙŠ Ø´Ø±Ø§Ø¡ Ù†Ø·Ø§Ù‚ .maØŸ",
+      fr: "Est-ce que vous gérez les domaines .ma ?",
+      ar: "هل توفرون المساعدة في شراء نطاق .ma؟",
     },
     answer: {
-      fr: "Oui. Nous vous accompagnons pour l'achat du .ma via des registrars accrÃ©ditÃ©s ANRT et la configuration DNS.",
-      ar: "Ù†Ø¹Ù…ØŒ Ù†Ø³Ø§Ø¹Ø¯Ùƒ ÙÙŠ Ø´Ø±Ø§Ø¡ Ù†Ø·Ø§Ù‚ .ma Ø¹Ø¨Ø± Ù…Ø³Ø¬Ù„ÙŠÙ† Ù…Ø¹ØªÙ…Ø¯ÙŠÙ† Ù…Ù† ANRT ÙˆØ¶Ø¨Ø· DNS.",
+      fr: "Oui. Nous vous accompagnons pour l'achat du .ma via des registrars accrédités ANRT et la configuration DNS.",
+      ar: "نعم، نساعدك في شراء نطاق .ma عبر مسجلين معتمدين من ANRT وضبط DNS.",
     },
   },
   {
     id: "f2",
     question: {
-      fr: "Quels moyens de paiement pouvez-vous intÃ©grer ?",
-      ar: "Ù…Ø§ ÙˆØ³Ø§Ø¦Ù„ Ø§Ù„Ø¯ÙØ¹ Ø§Ù„ØªÙŠ ÙŠÙ…ÙƒÙ† Ø¯Ù…Ø¬Ù‡Ø§ØŸ",
+      fr: "Quels moyens de paiement pouvez-vous intégrer ?",
+      ar: "ما وسائل الدفع التي يمكن دمجها؟",
     },
     answer: {
-      fr: "CMI (Maroc Telecommerce), NAPS, Payzone, paiement Ã  la livraison (COD), et commande WhatsApp.",
-      ar: "CMI ÙˆNAPS ÙˆPayzone Ù…Ø¹ Ø§Ù„Ø¯ÙØ¹ Ø¹Ù†Ø¯ Ø§Ù„Ø§Ø³ØªÙ„Ø§Ù… ÙˆØ§Ù„Ø·Ù„Ø¨ Ø¹Ø¨Ø± ÙˆØ§ØªØ³Ø§Ø¨.",
+      fr: "CMI (Maroc Telecommerce), NAPS, Payzone, paiement à la livraison (COD), et commande WhatsApp.",
+      ar: "CMI وNAPS وPayzone مع الدفع عند الاستلام والطلب عبر واتساب.",
     },
   },
   {
     id: "f3",
     question: {
       fr: "Comment se passent les paiements du projet ?",
-      ar: "ÙƒÙŠÙ ÙŠØªÙ… Ø£Ø¯Ø§Ø¡ ØªÙƒÙ„ÙØ© Ø§Ù„Ù…Ø´Ø±ÙˆØ¹ØŸ",
+      ar: "كيف يتم أداء تكلفة المشروع؟",
     },
     answer: {
-      fr: "En gÃ©nÃ©ral: 50% Ã  l'avance, 30% sur preview, 20% Ã  la mise en ligne.",
-      ar: "Ø¹Ø§Ø¯Ø©: 50% Ù…Ù‚Ø¯Ù…Ù‹Ø§ØŒ 30% Ø¹Ù†Ø¯ Ø§Ù„Ù…Ø¹Ø§ÙŠÙ†Ø©ØŒ 20% Ø¹Ù†Ø¯ Ø§Ù„Ø¥Ø·Ù„Ø§Ù‚.",
+      fr: "En général: 50% à l'avance, 30% sur preview, 20% à la mise en ligne.",
+      ar: "عادة: 50% مقدمًا، 30% عند المعاينة، 20% عند الإطلاق.",
     },
   },
 ];
@@ -284,45 +313,45 @@ const fallbackFaq: FaqItem[] = [
 const fallbackBlogPosts: BlogPost[] = [
   {
     slug: "seo-local-maroc",
-    title: { fr: "SEO local au Maroc: guide pratique 2026", ar: "Ø¯Ù„ÙŠÙ„ SEO Ø§Ù„Ù…Ø­Ù„ÙŠ ÙÙŠ Ø§Ù„Ù…ØºØ±Ø¨ 2026" },
+    title: { fr: "SEO local au Maroc: guide pratique 2026", ar: "دليل SEO المحلي في المغرب 2026" },
     excerpt: {
-      fr: "Comment apparaÃ®tre sur Google Maps Ã  Casablanca, Rabat et KÃ©nitra.",
-      ar: "ÙƒÙŠÙ ØªØ¸Ù‡Ø± ÙÙŠ Ø®Ø±Ø§Ø¦Ø· Google ÙÙŠ Ø§Ù„Ø¯Ø§Ø± Ø§Ù„Ø¨ÙŠØ¶Ø§Ø¡ ÙˆØ§Ù„Ø±Ø¨Ø§Ø· ÙˆØ§Ù„Ù‚Ù†ÙŠØ·Ø±Ø©.",
+      fr: "Comment apparaître sur Google Maps à Casablanca, Rabat et Kénitra.",
+      ar: "كيف تظهر في خرائط Google في الدار البيضاء والرباط والقنيطرة.",
     },
     content: {
-      fr: "Le SEO local commence par une fiche Google Business Profile complÃ¨te, des avis rÃ©guliers, des citations cohÃ©rentes, et un site rapide orientÃ© mobile.",
-      ar: "SEO Ø§Ù„Ù…Ø­Ù„ÙŠ ÙŠØ¨Ø¯Ø£ Ø¨Ù…Ù„Ù Google Business Ù…ÙƒØªÙ…Ù„ ÙˆØªÙ‚ÙŠÙŠÙ…Ø§Øª Ù…Ø³ØªÙ…Ø±Ø© ÙˆØ¥Ø¯Ø±Ø§Ø¬Ø§Øª Ù…ØªÙ†Ø§Ø³Ù‚Ø© ÙˆÙ…ÙˆÙ‚Ø¹ Ø³Ø±ÙŠØ¹ Ù…ÙˆØ¬Ù‡ Ù„Ù„Ù‡Ø§ØªÙ.",
+      fr: "Le SEO local commence par une fiche Google Business Profile complète, des avis réguliers, des citations cohérentes, et un site rapide orienté mobile.",
+      ar: "SEO المحلي يبدأ بملف Google Business مكتمل وتقييمات مستمرة وإدراجات متناسقة وموقع سريع موجه للهاتف.",
     },
     date: "2026-01-20",
-    category: { fr: "SEO local", ar: "SEO Ù…Ø­Ù„ÙŠ" },
+    category: { fr: "SEO local", ar: "SEO محلي" },
   },
   {
     slug: "commande-whatsapp-maroc",
-    title: { fr: "Pourquoi WhatsApp convertit mieux pour les commerces locaux", ar: "Ù„Ù…Ø§Ø°Ø§ ÙˆØ§ØªØ³Ø§Ø¨ ÙŠØ­Ù‚Ù‚ ØªØ­ÙˆÙŠÙ„Ù‹Ø§ Ø£ÙØ¶Ù„ Ù„Ù„ØªØ¬Ø§Ø± Ø§Ù„Ù…Ø­Ù„ÙŠÙŠÙ†" },
+    title: { fr: "Pourquoi WhatsApp convertit mieux pour les commerces locaux", ar: "لماذا واتساب يحقق تحويلًا أفضل للتجار المحليين" },
     excerpt: {
-      fr: "RÃ©duire la friction entre dÃ©couverte produit et commande.",
-      ar: "ØªÙ‚Ù„ÙŠÙ„ Ø§Ù„Ø§Ø­ØªÙƒØ§Ùƒ Ø¨ÙŠÙ† Ø§ÙƒØªØ´Ø§Ù Ø§Ù„Ù…Ù†ØªØ¬ ÙˆØ¥ØªÙ…Ø§Ù… Ø§Ù„Ø·Ù„Ø¨.",
+      fr: "Réduire la friction entre découverte produit et commande.",
+      ar: "تقليل الاحتكاك بين اكتشاف المنتج وإتمام الطلب.",
     },
     content: {
-      fr: "Les clients marocains prÃ©fÃ¨rent souvent WhatsApp pour poser une question avant achat. Un bouton par produit amÃ©liore la conversion.",
-      ar: "Ø§Ù„Ø¹Ù…Ù„Ø§Ø¡ ÙÙŠ Ø§Ù„Ù…ØºØ±Ø¨ ÙŠÙØ¶Ù„ÙˆÙ† ÙˆØ§ØªØ³Ø§Ø¨ Ù„Ø·Ø±Ø­ Ø§Ù„Ø£Ø³Ø¦Ù„Ø© Ù‚Ø¨Ù„ Ø§Ù„Ø´Ø±Ø§Ø¡ØŒ ÙˆØ²Ø± ÙˆØ§ØªØ³Ø§Ø¨ Ù„ÙƒÙ„ Ù…Ù†ØªØ¬ ÙŠØ±ÙØ¹ Ø§Ù„ØªØ­ÙˆÙŠÙ„.",
+      fr: "Les clients marocains préfèrent souvent WhatsApp pour poser une question avant achat. Un bouton par produit améliore la conversion.",
+      ar: "العملاء في المغرب يفضلون واتساب لطرح الأسئلة قبل الشراء، وزر واتساب لكل منتج يرفع التحويل.",
     },
     date: "2026-01-14",
-    category: { fr: "Conversion", ar: "Ø§Ù„ØªØ­ÙˆÙŠÙ„" },
+    category: { fr: "Conversion", ar: "التحويل" },
   },
   {
     slug: "choisir-domaine-ma",
-    title: { fr: "Comment choisir un nom de domaine .ma pour son business", ar: "ÙƒÙŠÙ ØªØ®ØªØ§Ø± Ù†Ø·Ø§Ù‚ .ma Ù„Ù†Ø´Ø§Ø·Ùƒ" },
+    title: { fr: "Comment choisir un nom de domaine .ma pour son business", ar: "كيف تختار نطاق .ma لنشاطك" },
     excerpt: {
-      fr: "RÃ¨gles de base et conseils branding local.",
-      ar: "Ù‚ÙˆØ§Ø¹Ø¯ Ø£Ø³Ø§Ø³ÙŠØ© ÙˆÙ†ØµØ§Ø¦Ø­ Ù„Ù„Ù‡ÙˆÙŠØ© Ø§Ù„Ù…Ø­Ù„ÙŠØ©.",
+      fr: "Règles de base et conseils branding local.",
+      ar: "قواعد أساسية ونصائح للهوية المحلية.",
     },
     content: {
-      fr: "Le .ma renforce la confiance locale. Choisissez un nom court, lisible, et proche de votre marque ou activitÃ© principale.",
-      ar: "Ù†Ø·Ø§Ù‚ .ma ÙŠØ¹Ø²Ø² Ø§Ù„Ø«Ù‚Ø© Ù…Ø­Ù„ÙŠÙ‹Ø§ØŒ Ø§Ø®ØªØ± Ø§Ø³Ù…Ù‹Ø§ Ù‚ØµÙŠØ±Ù‹Ø§ ÙˆÙˆØ§Ø¶Ø­Ù‹Ø§ ÙˆÙ‚Ø±ÙŠØ¨Ù‹Ø§ Ù…Ù† Ø¹Ù„Ø§Ù…ØªÙƒ.",
+      fr: "Le .ma renforce la confiance locale. Choisissez un nom court, lisible, et proche de votre marque ou activité principale.",
+      ar: "نطاق .ma يعزز الثقة محليًا، اختر اسمًا قصيرًا وواضحًا وقريبًا من علامتك.",
     },
     date: "2026-01-07",
-    category: { fr: "Domaines", ar: "Ø§Ù„Ù†Ø·Ø§Ù‚Ø§Øª" },
+    category: { fr: "Domaines", ar: "النطاقات" },
   },
 ];
 
