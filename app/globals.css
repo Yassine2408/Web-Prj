@@ -15,6 +15,16 @@
   --ring: oklch(0.67 0.2 248);
   --popover: oklch(0.99 0.004 252);
   --popover-foreground: oklch(0.26 0.06 264);
+  --cta: #14a0f8;
+  --dark-section: #1e2532;
+  --accent-1: #14a0f8;
+  --accent-2: #22c7b8;
+  --accent-3: #8f6bff;
+  --accent-4: #ff7a3d;
+  --text-heading: #1e2532;
+  --text-body: #666666;
+  --text-muted: #8b93a7;
+  --bg-light: #f8f9fb;
 }
 
 .dark {
@@ -144,4 +154,46 @@ section {
   100% {
     transform: translate3d(0, 0, 0) scale(1);
   }
+}
+
+.btn-cta {
+  background: linear-gradient(135deg, var(--cta), color-mix(in srgb, var(--cta), #ffffff 18%));
+  color: #fff;
+  box-shadow: 0 10px 24px -12px color-mix(in srgb, var(--cta), transparent 35%);
+}
+
+.btn-cta:hover {
+  filter: brightness(0.95);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--primary), color-mix(in srgb, var(--primary), #ffffff 30%));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+}
+
+.dot-pattern {
+  background-image: radial-gradient(circle at 1px 1px, rgba(32, 58, 99, 0.08) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: color-mix(in srgb, var(--primary), white 92%);
+}
+
+*::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--primary), transparent 35%);
+  border-radius: 999px;
 }
