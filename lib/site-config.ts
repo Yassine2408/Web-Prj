@@ -7,7 +7,7 @@ export const siteConfig = {
   domain: "sitara.ma",
   whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "212653205141",
   phone: process.env.NEXT_PUBLIC_PHONE_NUMBER || "+212653205141",
-  email: process.env.CONTACT_EMAIL_TO || "hello@sitara.ma",
+  email: process.env.CONTACT_EMAIL_TO || "sitara.kenitra@gmail.com",
   city: "Kenitra",
   address: "Studio en ligne - Kenitra, Maroc",
   mapEmbedUrl:

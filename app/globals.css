@@ -197,3 +197,34 @@ section {
   background: color-mix(in srgb, var(--primary), transparent 35%);
   border-radius: 999px;
 }
+
+@property --border-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.animated-gradient-border {
+  background: conic-gradient(
+    from var(--border-angle),
+    #ff6b6b,
+    #0066cc,
+    #ffb800,
+    #00cc66,
+    #9b59b6,
+    #ff6b6b
+  );
+  animation: spin-gradient 4s linear infinite;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  padding: 1.5px;
+}
+
+@keyframes spin-gradient {
+  to {
+    --border-angle: 360deg;
+  }
+}

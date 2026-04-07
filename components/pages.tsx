@@ -11,6 +11,7 @@ import { StatsSection } from "@/components/stats-section";
 import { IndustryBadges } from "@/components/industry-badges";
 import { ProcessTimeline } from "@/components/process-timeline";
 import { ScrollReveal } from "@/components/scroll-reveal";
+import { TiltCard } from "@/components/tilt-card";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { getBlogPosts, getCaseStudies, getFaq, getServices, getTestimonials } from "@/lib/content";
@@ -141,8 +142,9 @@ export async function HomePage({ locale }: { locale: Locale }) {
           )}
         </p>
         <div className="mt-5 grid gap-4 md:grid-cols-3">
-          {work.slice(0, 3).map((item) => (
-            <Card key={item.slug} className="rounded-2xl">
+          {work.slice(0, 3).map((item, idx) => (
+            <TiltCard key={item.slug} className="h-full" glowColor={["#0066CC", "#00CC66", "#FFB800", "#9B59B6"][idx % 4]}>
+              <Card className="rounded-2xl">
               {item.gallery?.[0] ? (
                 <div className="aspect-[16/9] overflow-hidden rounded-t-2xl border-b border-border/60">
                   <img src={item.gallery[0]} alt={item.title[locale]} className="h-full w-full object-cover" loading="lazy" />
@@ -159,7 +161,8 @@ export async function HomePage({ locale }: { locale: Locale }) {
                   </Link>
                 </Button>
               </CardContent>
-            </Card>
+              </Card>
+            </TiltCard>
           ))}
         </div>
       </section>
@@ -316,8 +319,9 @@ export async function WorkPage({ locale }: { locale: Locale }) {
         </p>
       </div>
       <div className="grid gap-4 md:grid-cols-3">
-        {work.map((item) => (
-          <Card key={item.slug} className="rounded-2xl">
+        {work.map((item, idx) => (
+          <TiltCard key={item.slug} className="h-full" glowColor={["#0066CC", "#00CC66", "#FFB800", "#9B59B6"][idx % 4]}>
+            <Card className="rounded-2xl">
             {item.gallery?.[0] ? (
               <div className="aspect-[16/9] overflow-hidden rounded-t-2xl border-b border-border/60">
                 <img src={item.gallery[0]} alt={item.title[locale]} className="h-full w-full object-cover" loading="lazy" />
@@ -342,7 +346,8 @@ export async function WorkPage({ locale }: { locale: Locale }) {
                 ) : null}
               </div>
             </CardContent>
-          </Card>
+            </Card>
+          </TiltCard>
         ))}
       </div>
     </div>
