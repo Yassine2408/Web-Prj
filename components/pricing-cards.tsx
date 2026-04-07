@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Check } from "lucide-react";
+import { TiltCard } from "@/components/tilt-card";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import type { Locale } from "@/lib/types";
@@ -45,8 +46,9 @@ export function PricingCards({ locale }: { locale: Locale }) {
   const data = plans[locale];
   return (
     <div className="grid gap-4 md:grid-cols-3">
-      {data.map((plan) => (
-        <Card key={plan.name} className="rounded-2xl">
+      {data.map((plan, idx) => (
+        <TiltCard key={plan.name} className="h-full" glowColor={["#14a0f8", "#8f6bff", "#22c7b8"][idx % 3]} tiltStrength={12}>
+          <Card className="rounded-2xl">
           <CardHeader>
             <CardTitle>{plan.name}</CardTitle>
             <p className="text-2xl font-semibold">{plan.price}</p>
@@ -66,7 +68,8 @@ export function PricingCards({ locale }: { locale: Locale }) {
               </Link>
             </Button>
           </CardContent>
-        </Card>
+          </Card>
+        </TiltCard>
       ))}
     </div>
   );

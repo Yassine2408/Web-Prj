@@ -1,4 +1,5 @@
 import { TrendingUp, Users, Zap, Star } from "lucide-react";
+import { TiltCard } from "@/components/tilt-card";
 import type { Locale } from "@/lib/types";
 
 const stats = {
@@ -24,14 +25,13 @@ export function StatsSection({ locale }: { locale: Locale }) {
       {data.map((stat, idx) => {
         const Icon = stat.icon;
         return (
-          <div
-            key={idx}
-            className="sitara-surface group flex flex-col items-center rounded-2xl p-6 text-center transition-all duration-300 hover:-translate-y-1"
-          >
-            <Icon className="h-8 w-8 text-primary transition-transform duration-300 group-hover:scale-110" />
-            <p className="mt-3 text-3xl font-bold">{stat.value}</p>
-            <p className="mt-1 text-sm text-muted-foreground">{stat.label}</p>
-          </div>
+          <TiltCard key={idx} className="h-full" glowColor={["#14a0f8", "#22c7b8", "#8f6bff", "#ff7a3d"][idx % 4]} tiltStrength={10}>
+            <div className="sitara-surface group flex h-full flex-col items-center rounded-2xl p-6 text-center transition-all duration-300 hover:-translate-y-1">
+              <Icon className="h-8 w-8 text-primary transition-transform duration-300 group-hover:scale-110" />
+              <p className="mt-3 text-3xl font-bold">{stat.value}</p>
+              <p className="mt-1 text-sm text-muted-foreground">{stat.label}</p>
+            </div>
+          </TiltCard>
         );
       })}
     </section>

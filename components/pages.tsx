@@ -155,7 +155,11 @@ export async function HomePage({ locale }: { locale: Locale }) {
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground">{item.problem[locale]}</p>
-                <Button asChild variant="outline" className="mt-4 w-full">
+                <Button
+                  asChild
+                  variant="outline"
+                  className="mt-4 w-full border-primary/25 bg-background/80 hover:-translate-y-0.5 hover:border-primary hover:bg-gradient-to-r hover:from-primary hover:to-secondary hover:text-primary-foreground hover:shadow-md hover:shadow-primary/25"
+                >
                   <Link href={(locale === "ar" ? "/ar/work/" : "/fr/work/") + item.slug}>
                     {t(locale, "Voir le projet", "عرض المشروع")}
                   </Link>
@@ -338,7 +342,11 @@ export async function WorkPage({ locale }: { locale: Locale }) {
                   <Link href={(locale === "ar" ? "/ar/work/" : "/fr/work/") + item.slug}>{t(locale, "Voir le projet", "عرض المشروع")}</Link>
                 </Button>
                 {item.liveUrl ? (
-                  <Button asChild variant="outline" className="w-full">
+                  <Button
+                    asChild
+                    variant="outline"
+                    className="w-full border-primary/25 bg-background/80 hover:-translate-y-0.5 hover:border-primary hover:bg-gradient-to-r hover:from-primary hover:to-secondary hover:text-primary-foreground hover:shadow-md hover:shadow-primary/25"
+                  >
                     <a href={item.liveUrl} target="_blank" rel="noreferrer">
                       {t(locale, "Visiter le site", "زيارة الموقع")}
                     </a>
